@@ -97,7 +97,7 @@ function showCreateAccount() {
 function createAccount() {
   var data = {Name : document.getElementById("accountName").value};
   force.create('Account',data);
-  return showAccountList();
+  window.location.href = "#";
 }
 
 var slider = new PageSlider($('body')); // Initialize PageSlider micro-library for nice and hardware-accelerated page transitions
