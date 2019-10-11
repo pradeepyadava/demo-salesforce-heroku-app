@@ -54,11 +54,10 @@ function showAccountDetails(accountId) {
               html += '<div class="card">' +
                         '<ul class="table-view">' +
                             '<li class="table-view-cell">Name: ' +
-                                '<h4>' + contacts[key].FirstName + '</h4>' +
-                                '<p>' + (contacts[key].LastName)+ '</p>' +
+                                '<h4>' + contacts[key].LastName + contacts[key].FirstName + '</h4>' +
                             '</li>' +
                             '<li class="table-view-cell">Email: ' +
-                                contacts[key].Email +
+                                (contacts[key].Email || 'No Email') +
                             '</li>' +
                             '<li class="table-view-cell">Account Name: ' +
                                 (contacts[key].Account.Name) +
