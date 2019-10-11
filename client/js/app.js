@@ -42,30 +42,33 @@ function showAccountDetails(accountId) {
 
     getAccountDetails(accountId,
         function (data) {
-            var contact = data.records[0],
+            var contacts = data.records,
             html =
                 '<div class="page">' +
                 '<header class="bar bar-nav">' +
                 '<a class="btn btn-link btn-nav pull-left" href="#"><span class="icon icon-left-nav"></span>Back</a>' +
             '<h1 class="title">Contacts</h1>' +
                 '</header>' +
-                '<div class="content">' +
-                    '<div class="card">' +
+                '<div class="content">';
+            for(var key in contacts) {
+              html += '<div class="card">' +
                         '<ul class="table-view">' +
                             '<li class="table-view-cell">Name: ' +
-                                '<h4>' + contact.FirstName + '</h4>' +
-                                '<p>' + (contact.LastName || 'No time yet')+ '</p>' +
+                                '<h4>' + contacts[key].FirstName + '</h4>' +
+                                '<p>' + (contacts[key].LastName)+ '</p>' +
                             '</li>' +
                             '<li class="table-view-cell">Email: ' +
-                                contact.Email +
+                                contacts[key].Email +
                             '</li>' +
                             '<li class="table-view-cell">Account Name: ' +
-                                (contact.Account.Name) +
+                                (contacts[key].Account.Name) +
                             '</li>' +
                         '</ul>' +
                     '</div>' +
-                '</div>' +
-                '</div>';
+            }
+                    
+            html +'</div>'+
+              '</div>';
             slider.slidePage($(html));
         },
         function (error) {
