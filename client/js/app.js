@@ -64,10 +64,10 @@ function showAccountDetails(accountId) {
                                 (contacts[key].Account.Name) +
                             '</li>' +
                         '</ul>' +
-                    '</div>' +
+                    '</div>';
             }
                     
-            html +'</div>'+
+            html +='</div>'+
               '</div>';
             slider.slidePage($(html));
         },
