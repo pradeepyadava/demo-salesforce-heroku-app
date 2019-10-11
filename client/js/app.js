@@ -1,30 +1,30 @@
-function getSessionList(success, error) {
-  var soql = "SELECT Id, FirstName, LastName FROM Contact";
+function getAccountList(success, error) {
+  var soql = "SELECT Id, Name FROM Account";
   force.query(soql, success, error);
 }
 
-function getSessionDetails(sessionId, success, error) {
+function getAccountDetails(accountId, success, error) {
   var soql = "SELECT FirstName, " +
   "LastName, " +
   "Account.Name, " +
   "Email " +
   "FROM Contact " +
-  "WHERE Id = '" + sessionId + "'";
+  "WHERE Account.Id = '" + accountId + "'";
   force.query(soql, success, error);
 }
 
-function showSessionList() {
-    getSessionList(
+function showAccountList() {
+    getAccountList(
         function (data) {
-            var sessions = data.records,
+            var accounts = data.records,
                 html = '';
-            for (var i=0; i<sessions.length; i++) {
-                html += '<li class="table-view-cell"><a href="#sessions/'+ sessions[i].Id +'">' + sessions[i].FirstName + '</a></li>';
+            for (var i=0; i<accounts.length; i++) {
+                html += '<li class="table-view-cell"><a href="#sessions/'+ accounts[i].Id +'">' + accounts[i].Name + '</a></li>';
             }
             html =
                 '<div class="page">' +
                 '<header class="bar bar-nav">' +
-                    '<h1 class="title">Sessions</h1>' +
+                    '<h1 class="title">Accounts</h1>' +
                 '</header>' +
                 '<div class="content">' +
                     '<ul class="table-view session-list">' + html + '</ul>' +
@@ -38,11 +38,11 @@ function showSessionList() {
     return false;
 }
 
-function showSessionDetails(sessionId) {
+function showAccountDetails(accountId) {
 
-    getSessionDetails(sessionId,
+    getAccountDetails(accountId,
         function (data) {
-            var session = data.records[0],
+            var contact = data.records[0],
             html =
                 '<div class="page">' +
                 '<header class="bar bar-nav">' +
@@ -52,15 +52,15 @@ function showSessionDetails(sessionId) {
                 '<div class="content">' +
                     '<div class="card">' +
                         '<ul class="table-view">' +
-                            '<li class="table-view-cell">' +
-                                '<h4>' + session.FirstName + '</h4>' +
-                                '<p>' + (session.LastName || 'No time yet')+ '</p>' +
+                            '<li class="table-view-cell">Name: ' +
+                                '<h4>' + contact.FirstName + '</h4>' +
+                                '<p>' + (contact.LastName || 'No time yet')+ '</p>' +
                             '</li>' +
                             '<li class="table-view-cell">Email: ' +
-                                session.Email +
+                                contact.Email +
                             '</li>' +
-                            '<li class="table-view-cell">' +
-                                (session.Account.Name || 'No description yet') +
+                            '<li class="table-view-cell">Account Name: ' +
+                                (contact.Account.Name) +
                             '</li>' +
                         '</ul>' +
                     '</div>' +
@@ -75,5 +75,5 @@ function showSessionDetails(sessionId) {
 }
 
 var slider = new PageSlider($('body')); // Initialize PageSlider micro-library for nice and hardware-accelerated page transitions
-router.addRoute('', showSessionList);
-router.addRoute('sessions/:id', showSessionDetails);
+router.addRoute('', showAccountList);
+router.addRoute('accounts/:id', showAccountDetails);
