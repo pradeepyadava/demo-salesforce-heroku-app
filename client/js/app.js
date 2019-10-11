@@ -27,7 +27,7 @@ function showAccountList() {
                     '<h1 class="title">Accounts</h1>' +
                 '</header>' +
                 '<div class="content">' +
-                    '<ul class="table-view session-list">'
+                    '<ul class="table-view session-list">'+
                       '<li class="table-view-cell"><a class="btn btn-link" href="#accountcreate">New Account</a></li>'+
                     '</ul>'+
                     '<ul class="table-view session-list">' + html + '</ul>' +
