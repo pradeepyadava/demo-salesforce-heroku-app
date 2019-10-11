@@ -19,7 +19,7 @@ function showAccountList() {
             var accounts = data.records,
                 html = '';
             for (var i=0; i<accounts.length; i++) {
-                html += '<li class="table-view-cell"><a href="#sessions/'+ accounts[i].Id +'">' + accounts[i].Name + '</a></li>';
+                html += '<li class="table-view-cell"><a href="#accounts/'+ accounts[i].Id +'">' + accounts[i].Name + '</a></li>';
             }
             html =
                 '<div class="page">' +
