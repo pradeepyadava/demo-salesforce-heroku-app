@@ -96,8 +96,9 @@ function showCreateAccount() {
 
 function createAccount() {
   var data = {Name : document.getElementById("accountName").value};
-  force.create('Account',data);
-  window.location.href = "#";
+  force.create('Account',data, function(){
+    alert("Account created successfully");
+  });
 }
 
 var slider = new PageSlider($('body')); // Initialize PageSlider micro-library for nice and hardware-accelerated page transitions
