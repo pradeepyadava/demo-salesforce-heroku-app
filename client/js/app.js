@@ -27,7 +27,9 @@ function showAccountList() {
                     '<h1 class="title">Accounts</h1>' +
                 '</header>' +
                 '<div class="content">' +
-                    '<li class="table-view-cell"><a href="#accountcreate">New Account</a></li>'+
+                    '<ul class="table-view session-list">'
+                      '<li class="table-view-cell"><a class="btn btn-link" href="#accountcreate">New Account</a></li>'+
+                    '</ul>'+
                     '<ul class="table-view session-list">' + html + '</ul>' +
                 '</div>' +
                 '</div>';
@@ -78,10 +80,18 @@ function showAccountDetails(accountId) {
 }
 
 function showCreateAccount() {
-  html = '<form>'+
-  'Account Name: <input type="text" id="accountName" name="fname"><br>'+
-  '<input type="submit" value="Save" onclick="createAccount()">'+
-  '</form>';
+  html = '<div class="page">' +
+          '<header class="bar bar-nav">' +
+            '<a class="btn btn-link btn-nav pull-left" href="#"><span class="icon icon-left-nav"></span>Back</a>' +
+            '<h1 class="title">New Account</h1>' +
+          '</header>' +
+          '<div class="content">'+
+            '<form>'+
+              'Account Name: <input type="text" id="accountName" name="fname"><br>'+
+              '<input type="submit" value="Save" onclick="createAccount()">'+
+            '</form>'+
+          '</div>'+
+        '</div>';
   slider.slidePage($(html));
   return false;
 }
