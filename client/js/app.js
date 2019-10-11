@@ -86,7 +86,7 @@ function showCreateAccount() {
           '<div class="content">'+
             '<form>'+
               'Account Name: <input type="text" id="accountName" name="fname"><br>'+
-              '<input type="submit" value="Save" onclick="createAccount()">'+
+              '<button type="button" onclick="createAccount()">Save</button>'+
             '</form>'+
           '</div>'+
         '</div>';
