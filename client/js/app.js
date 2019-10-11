@@ -25,7 +25,7 @@ function showAccountList() {
                 '<div class="page">' +
                 '<header class="bar bar-nav">' +
                     '<h1 class="title">Accounts</h1>' +
-                    '<a href="#account/create">' + 'New Account' + '</a>'+
+                    '<a href="#accountcreate">' + 'New Account' + '</a>'+
                 '</header>' +
                 '<div class="content">' +
                     '<ul class="table-view session-list">' + html + '</ul>' +
@@ -96,4 +96,4 @@ function createAccount() {
 var slider = new PageSlider($('body')); // Initialize PageSlider micro-library for nice and hardware-accelerated page transitions
 router.addRoute('', showAccountList);
 router.addRoute('accounts/:id', showAccountDetails);
-router.addRoute('account/create',showCreateAccount);
+router.addRoute('accountcreate',showCreateAccount);
