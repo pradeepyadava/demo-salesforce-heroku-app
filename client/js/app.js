@@ -25,6 +25,7 @@ function showAccountList() {
                 '<div class="page">' +
                 '<header class="bar bar-nav">' +
                     '<h1 class="title">Accounts</h1>' +
+                    '<a href="#account/create">' + 'New Account' + '</a>'+
                 '</header>' +
                 '<div class="content">' +
                     '<ul class="table-view session-list">' + html + '</ul>' +
@@ -76,6 +77,23 @@ function showAccountDetails(accountId) {
     return false;
 }
 
+function showCreateAccount() {
+  html = '<form>'+
+  'Account Name: <input type="text" id="accountName" name="fname"><br>'+
+  '<input type="submit" value="Save" onclick="createAccount()">'+
+  '</form>';
+  slider.slidePage($(html));
+  return false;
+}
+
+function createAccount() {
+  var data = {Name : document.getElementById("accountName").value};
+  force.create('Account',data);
+  showAccountList();
+  return false;
+}
+
 var slider = new PageSlider($('body')); // Initialize PageSlider micro-library for nice and hardware-accelerated page transitions
 router.addRoute('', showAccountList);
 router.addRoute('accounts/:id', showAccountDetails);
+router.addRoute('account/create',showCreateAccount);
